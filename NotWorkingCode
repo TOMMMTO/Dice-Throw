@@ -60,4 +60,4 @@ public class Othercode {
     }
     tv_roll1_result.setText(String.valueOf(sum));
     }
-ł}
+}
