@@ -36,7 +36,7 @@ public class Othercode {
     if (rollsAdd.charAt(0) == '-') {
      sumSubtract += rollSum;
     }
-    // if the operator is "+", add its value to sumAdd variable
+    //if the operator is "+", add its value to sumAdd variable
     else {
      sumAdd += rollSum;
    }
