@@ -1,6 +1,6 @@
 public class Othercode {
 
-//w tym kodzie aplikacja wyrzyca gdy podawana jest wartość dwucyfrowa 
+//w tym kodzie aplikacja wyrzyca gdy podawana jest wartość dwucyfrowa po "+" 
    //tells the progrom what characters to split the string by, "A" allows for either "+" or "-" at the begininning of the string
     Pattern expressionFormat = Pattern.compile("((\\A|\\+|\\-)(\\d+[d])?(\\+|\\-|\\d+)?)");
 
