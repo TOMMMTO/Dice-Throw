@@ -1,0 +1,63 @@
+public class Othercode {
+   //tells the progrom what characters to split the string by, "A" allows for either "+" or "-" at the begininning of the string
+    Pattern expressionFormat = Pattern.compile("((\\A|\\+|\\-)(\\d+[d])?(\\+|\\-|\\d+)?)");
+
+    String equationAdd = et_roll1.getText().toString();
+
+    Matcher matcher = expressionFormat.matcher(equationAdd);
+
+    String rollsAdd;
+
+    int sumSubtract = 0;
+    int sumAdd = 0;
+    int modTotal = 0;
+
+    while (matcher.find()) {
+     rollsAdd = matcher.group();
+    String[] diedataArray = rollsAdd.split("(\\+|\\-)"); //tells the program to isolate values with either "+" or "-"
+    String dieData = diedataArray[0];
+
+    if (diedataArray[0].length() == 0) {
+      dieData = diedataArray[1];
+    }
+    //splits the users input data further by looking for a value of "d", the number to the left of the "d" = times to roll, the number to the right of the "d" = number of faces on the die
+    if (rollsAdd.length() > 2) {
+      String[] dieDataAdd = dieData.split("d");
+    int dieQty = Integer.parseInt(dieDataAdd[0]);
+    int dieFace = Integer.parseInt(dieDataAdd[1]);
+    int rollSum = 0;
+
+    //rolls a dice based on the users input....ie. 1d6 rolls a single 6 sides dice, 3d20 rolls 3 different 20 sides dice
+    for (int i = 0; i < dieQty; i++) {
+      int roll = r.nextInt(dieFace) + 1;
+      rollSum += roll;
+       }
+    //program speicially looks for the "-" operator and then adds the value to the sumSubtract variable
+    if (rollsAdd.charAt(0) == '-') {
+     sumSubtract += rollSum;
+    }
+    // if the operator is "+", add its value to sumAdd variable
+    else {
+     sumAdd += rollSum;
+   }
+    }
+    //this accounts for any whole numbers that are not dice.....ie. 1d6+2, 2 being the modifier of the roll
+     if (rollsAdd.length() > 2) {
+    else{
+              int modifier = Integer.parseInt(rollsAdd);
+    String[] dieDataBonus = dieData.split("\\+");
+    int Bonus = Integer.parseInt(dieDataBonus[2]);
+     modTotal += modifier;
+    }
+    //these 2 IF statements test to see which value is the highest, then subtracts (only works if user inputs subtraction) the highest first in order to "always" show a positive number
+    if (sumAdd > sumSubtract) {
+       sum = sumAdd - sumSubtract + modTotal;
+    } else if (sumSubtract > sumAdd) {
+     sum = sumSubtract - sumAdd + modTotal;
+    } else {
+      sum = 0;
+    }
+    }
+    tv_roll1_result.setText(String.valueOf(sum));
+    }
+ł}
